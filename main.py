@@ -52,7 +52,7 @@ class App(Drawer):
         turtle.bgcolor('black')
         turtle.tracer(0)
         turtle.colormode(255)
-
+        
         self.amount = self.rand(10,20)
         # Grab some polys.
 
