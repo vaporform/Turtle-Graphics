@@ -31,6 +31,7 @@ class App(Drawer):
         return random.randint(a,b)
     
     def create_polygons(self,amount,sides):
+        # Create random polygons.
         polygons = []
         for _ in range(amount):
             size = random.randint(50, 150)
@@ -40,6 +41,7 @@ class App(Drawer):
         return polygons
     
     def generate(self):
+        # Generate the artwork
         option = self.option
         # Configs!
         # NORMALS: 1 2 3 [4]
@@ -53,34 +55,47 @@ class App(Drawer):
         turtle.tracer(0)
         turtle.colormode(255)
         
-        self.amount = self.rand(10,20)
-        # Grab some polys.
+        self.amount = self.rand(20,40)
 
-        if option in (1,4,9):
+        if option == 1:
             for i in self.create_polygons(self.amount,3):
                 self.random_brush()
                 self.draw_polygon(i)
-        if option in (2,4,9):
+        elif option == 2:
             for i in self.create_polygons(self.amount,4):
                 self.random_brush()
                 self.draw_polygon(i)
-        if option in (3,4,9):
+        elif option == 3:
             for i in self.create_polygons(self.amount,5):
                 self.random_brush()
                 self.draw_polygon(i)
-        
-        if option in (5,8,9):
+        elif option == 4:
+            for i in range(self.amount):
+                self.random_brush()
+                self.draw_polygon(self.create_polygons(1,random.randint(3,5))[0])
+        elif option == 5:
             for i in self.create_polygons(self.amount,3):
                 self.random_brush()
                 self.draw_n(3,i,0.618)
-        if option in (6,8,9):
+        elif option == 6:
             for i in self.create_polygons(self.amount,4):
                 self.random_brush()
                 self.draw_n(3,i,0.618)
-        if option in (7,8,9):
+        elif option == 7:
             for i in self.create_polygons(self.amount,5):
                 self.random_brush()
                 self.draw_n(3,i,0.618)
+        elif option == 8:
+            for i in range(self.amount):
+                self.random_brush()
+                self.draw_n(3,self.create_polygons(1,random.randint(3,5))[0],0.618)
+        elif option == 9:
+            for i in range(self.amount):
+                self.random_brush()
+                if random.randint(0,1) == 1:
+                    self.draw_n(random.randint(2,4),self.create_polygons(1,random.randint(3,5))[0],0.618)
+                else:
+                    self.draw_polygon(self.create_polygons(1,random.randint(3,5))[0])
         
         
         # hold the window; close it by clicking the window close 'x' mark
